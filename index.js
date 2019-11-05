@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const teams = require('./teams.json')
+const bodyParser = require('body-parser')
 
 app.get('/teams', (request, response) => {
   response.send(teams)
@@ -13,6 +14,11 @@ app.get('/teams/:filter', (request, response) => {
   response.send(teamInfo)
 })
 
+app.post('/teams', bodyParser.json(), (request, response) => {
+  const body = request.body || {}
+  console.log({body})
+  response.send(body)
+})
 
 app.all('*', (request, response) => {
   response.send('Specify a valid url please.')
