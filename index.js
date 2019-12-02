@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const teamsModel = require("./models/teams");
 
 app.get("/teams", (request, response) => {
-  response.send(teams);
+  const teams = models.teams.findAll()
 });
 
 app.get("/teams/:filter", (request, response) => {
